@@ -1,4 +1,4 @@
-FROM python:3-slim AS compile-image
+FROM python:3.10-slim AS compile-image
 
 ENV NODE_VER=16.3.0
 
@@ -32,7 +32,7 @@ COPY warp ./warp
 COPY setup.py MANIFEST.in ./
 RUN python setup.py bdist_wheel -d wheel
 
-FROM python:3-slim
+FROM python:3.10-slim
 WORKDIR /opt/warp
 
 RUN apt-get update && \
